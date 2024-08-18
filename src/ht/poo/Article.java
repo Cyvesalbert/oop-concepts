@@ -25,6 +25,8 @@ public class Article {
 		//completer
 	}
 	public double getPrixNet() {
+	
+	}
 		//completer
 	public void setPrixNet(double prix_net) {
 		//completer
