@@ -111,10 +111,21 @@ public class Etudiant {
     
     public boolean equals(Object etudiant_x) {
             // completer 
-    	if(etudiant_x.equals(this))
-    		return true;
-    	
-    	return false;
+    	 // Check if the reference is the same
+        if (this == etudiant_x) {
+            return true;
+        }
+
+        // Check if obj is an instance of Etudiant
+        if (etudiant_x == null || getClass() != etudiant_x.getClass()) {
+            return false;
+        }
+
+        // Cast obj to Etudiant
+        Etudiant other = (Etudiant) etudiant_x;
+
+        // Compare relevant fields for equality
+        return this.Matr.equals(other.Matr) && this.nom.equals(other.nom) && this.section == other.section && this.programme == other.programme;
     }
     
    
