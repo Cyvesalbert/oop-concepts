@@ -16,7 +16,7 @@ public class Article {
 		//completer
 		this.NumProduit = np;
 		this.nom = nom;
-		this.Prix_net = prix;
+		setPrixNet(prix);
 	}
 	
 
