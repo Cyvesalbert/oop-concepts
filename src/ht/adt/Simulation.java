@@ -3,24 +3,22 @@ package ht.adt;
 import java.util.Random;
 
 public class Simulation {
-	 private static Random random;  
+	 private static Random random = new Random();  
 
-	 //Retourne un nombre réel aléatoire uniformément dans [0,1[
-	    public static double uniform() {
+	 	//Retourne un nombre réel aléatoire uniformément dans [0,1[
+	 public static double uniform() {
 	        //completer
-			random.nextDouble();
-	    }
-
+			return random.nextDouble();
+	  }
 	 
-	 
-	 //Retourne un nombre entier aléatoire uniformément dans [0,n[
-	    public static int uniform(int n) {
+	 	//Retourne un nombre entier aléatoire uniformément dans [0,n[
+	 public static int uniform(int n) {
 	        //completer
-			random.nextInt(n);
+			return random.nextInt(n);
 	    }
 
 	//Retourne un entier long aléatoire uniformément dans [0, n[.
-        // Vous pouviez trouver le code https://docs.oracle.com/javase/8/docs/api/java/util/Random.html#longs-long-long-long-
+    // Vous pouviez trouver le code https://docs.oracle.com/javase/8/docs/api/java/util/Random.html#longs-long-long-long-
     public static long uniform(long n) {
         if (n <= 0L) throw new IllegalArgumentException("Argument doit etre positive: " + n);
 
@@ -44,10 +42,12 @@ public class Simulation {
     //Retourne avec succès un booléen true si p suit d'une distribution de Bernoulli
     public static boolean bernoulli(double p) {
        //completer
+    	return uniform() < p;
     }
     
     public static Compteur max(Compteur x, Compteur y) {
       // completer
+    	return (x.score() > y.score()) ? x : y;
     }
 	
 	 public static void main(String[] args) {
@@ -55,22 +55,34 @@ public class Simulation {
 	        Compteur pile = new Compteur("pile");
 	        Compteur face = new Compteur("face");
 	       
-              //Les instructions du simulation
-                   //completer
-              //afficher la différence entre les score des compteurs
+	        // Simulation d'un lancer de pièce
+			 for (int i = 0; i < n; i++) {
+				 if (bernoulli(0.5)) {
+					 pile.increment();  // Incrémente si c'est pile
+				 } else {
+					 face.increment();  // Incrémente si c'est face
+				 }
+			 }
+           
+			 // Afficher la différence entre les scores des compteurs
+			 System.out.println("Différence entre les scores: " + Math.abs(pile.score() - face.score()));
 	        
-	        Compteur pile_c = new Compteur("pile");
-		Compteur pile_c = new Compteur("face");
-		        
-	          //Les instructions du simulation
-                   //completer
-                   //afficher le maximum entre les score des compteur
+			// Simuler avec des compteurs supplémentaires et afficher le maximum
+			 Compteur pile_c = new Compteur("pile_c");
+			 Compteur face_c = new Compteur("face_c");
 
+			 for (int i = 0; i < n; i++) {
+				 if (bernoulli(0.5)) {
+					 pile_c.increment();
+				 } else {
+					 face_c.increment();
+				 }
+			 }
+
+			 // Afficher le maximum entre les scores des compteurs
+			 System.out.println("Score maximum : " + max(pile_c, face_c));
 
 	        }
-	    
 	        
 	    }
-
-
 
